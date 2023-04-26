@@ -5,9 +5,7 @@ const URL = "https://example-apis.vercel.app/api/art";
 
 export default function SpotlightPage() {
   const { data } = useSWR(URL);
-
   console.log("data: ", data);
-
   if (!data) return <div>Loading...</div>;
 
   function chooseRandomPiece(pieces) {
@@ -15,5 +13,7 @@ export default function SpotlightPage() {
     return pieces[randomNumber];
   }
 
-  return <Spotlight image={"a"} artist={"s"} />;
+  const piece = chooseRandomPiece(data);
+
+  return <Spotlight image={piece.imageSource} artist={piece.artist} />;
 }
