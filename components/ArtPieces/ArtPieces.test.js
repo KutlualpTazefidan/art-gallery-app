@@ -41,10 +41,7 @@ test("favorite-button is displayed", () => {
   expect(items.length).toBe(2);
 
   const firstItem = items[0];
-  expect(within(firstItem).getByText("My Title")).toBeInTheDocument();
-
-  const secondItem = items[1];
-  expect(
-    within(secondItem).getByText("Apples and Oranges")
-  ).toBeInTheDocument();
+  items.forEach((item) => {
+    expect(within(item).getByLabelText("favorite-button")).toBeInTheDocument();
+  });
 });
