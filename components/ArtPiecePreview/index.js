@@ -1,7 +1,24 @@
-import React from "react";
 import Image from "next/image";
 import FavoriteButton from "../FavoriteButton";
-export default function ArtPiecePreview({ image, title, artist }) {
+
+import { useArtPiecesInfo } from "../../stores/artPiecesInfo";
+import { useState } from "react";
+
+export default function ArtPiecePreview({ image, title, artist, slug }) {
+  // const slug = 1;
+  const favoritePieces = useArtPiecesInfo((state) => state.favoritePieces);
+  const addToFavorites = useArtPiecesInfo((state) => state.addToFavorites);
+  const removeFavorite = useArtPiecesInfo((state) => state.removeFavorite);
+
+  const isFavorite = favoritePieces.includes(slug);
+
+  function handleToggleFavorite() {
+    if (!favoritePieces.includes(slug)) {
+      addToFavorites(slug);
+    } else {
+      removeFavorite(slug);
+    }
+  }
   return (
     <article>
       {title && <h3>{title}</h3>}
@@ -12,7 +29,11 @@ export default function ArtPiecePreview({ image, title, artist }) {
         alt={`Image titled ${title}`}
       ></Image>
       <div>
-        <FavoriteButton isFavorite={0} onToggleFavorite={0} /> {artist}
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggleFavorite={handleToggleFavorite}
+        />{" "}
+        {artist}
       </div>
     </article>
   );
