@@ -8,11 +8,13 @@ export default function ArtPieces({ pieces }) {
       {pieces.map((piece) => {
         return (
           <li key={piece.slug}>
-            <ArtPiecePreview
-              image={piece.imageSource}
-              title={piece.name}
-              artist={piece.artist}
-            />
+            <Link href={`/art-pieces/${piece.slug}`}>
+              <ArtPiecePreview
+                image={piece.imageSource}
+                title={piece.name}
+                artist={piece.artist}
+              />
+            </Link>
           </li>
         );
       })}
