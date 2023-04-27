@@ -41,6 +41,7 @@ const favoritePieces = [
 
 const slugOfFavoritePieces = ["blue-and-red", "apples-and-oranges"];
 
+// Test for User Story 1
 test("list of pieces is displayed", () => {
   render(<ArtPieces pieces={pieces} />);
 
@@ -57,6 +58,7 @@ test("list of pieces is displayed", () => {
   ).toBeInTheDocument();
 });
 
+// Tests for User Story 5
 test("favorite-button is displayed", () => {
   render(<ArtPieces pieces={pieces} />);
 
@@ -69,6 +71,7 @@ test("favorite-button is displayed", () => {
   });
 });
 
+// Tests for User Story 6
 test("All favorite pieces displayed as a list", () => {
   render(<ArtPieces pieces={favoritePieces} />);
 
