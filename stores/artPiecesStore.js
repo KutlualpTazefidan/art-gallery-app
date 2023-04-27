@@ -7,10 +7,4 @@ export const useArtPiecesStore = create((set) => ({
       return { pieces: pieces };
     });
   },
-  artPiecesInfo: [],
-  setArtPiecesInfo: (pieceSlug) => {
-    set((state) => {
-      return { pieces: pieces };
-    });
-  },
 }));
