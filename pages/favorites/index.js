@@ -12,9 +12,6 @@ export default function FavoritesPage() {
   );
   return (
     <div>
-      {console.log("pieces", pieces)}
-      {console.log("favorites", favoritePieces)}
-      {console.log("favoritesSlug", slugOfFavoritePieces)}
       <ArtPieces pieces={favoritePieces} />
     </div>
   );
