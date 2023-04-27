@@ -9,7 +9,7 @@ const StyledButton = styled.button`
 
 export default function FavoriteButton({ isFavorite, onToggleFavorite }) {
   return (
-    <StyledButton>
+    <StyledButton onClick={onToggleFavorite}>
       {isFavorite ? <AiFillHeart /> : <AiOutlineHeart />}
     </StyledButton>
   );
