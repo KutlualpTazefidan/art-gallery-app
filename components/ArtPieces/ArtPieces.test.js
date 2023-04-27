@@ -78,3 +78,20 @@ test("All favorite pieces displayed as a list", async () => {
   const favoritesListItems = screen.getAllByRole("listitem");
   expect(favoritesListItems.length).toBe(2);
 });
+
+test("Each favorite art pieces image is displayed", async () => {
+  render(<ArtPieces pieces={favoritePieces} />);
+
+  const imagesOfFavoritesPieces = screen.getAllByRole("img");
+  expect(imagesOfFavoritesPieces.length).toBe(2);
+});
+
+// const slugsOfFavoritePieces = ["my-title", "apples-and-oranges"];
+
+// const addToFavorites = useArtPiecesInfo.getState().addToFavorites;
+// addToFavorites(slugsOfFavoritePieces);
+// const favoritePieces = useArtPiecesInfo.getState().favoritePieces;
+
+// await user.click(favoriteButton);
+
+// expect(favoritePieces).not.toContain(slug);
