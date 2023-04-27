@@ -19,3 +19,9 @@ test("Spotlight artist is displayed", () => {
 
   expect(screen.getByText(piece.artist)).toBeInTheDocument();
 });
+
+test("Spotlight title is not displayed", () => {
+  render(<Spotlight image={piece.imageSource} artist={piece.artist} />);
+
+  expect(screen.queryByRole("heading")).not.toBeInTheDocument();
+});
