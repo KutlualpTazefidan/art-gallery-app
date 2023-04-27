@@ -1,7 +1,15 @@
 import Image from "next/image";
 import FavoriteButton from "../FavoriteButton";
-
 import { useArtPiecesInfo } from "../../stores/artPiecesInfo";
+import styled from "styled-components";
+
+const StyledSpanCircle = styled.span`
+  height: 25px;
+  width: 25px;
+  background-color: ${(props) => props.color || "white"};
+  border-radius: 50%;
+  display: inline-block;
+`;
 
 export default function ArtPiecePreview({
   image,
@@ -41,6 +49,11 @@ export default function ArtPiecePreview({
           onToggleFavorite={handleToggleFavorite}
         />{" "}
         <span aria-label="artist">{artist}</span>
+      </div>
+      <div aria-label="Color Palette">
+        {colors?.map((color, i) => (
+          <StyledSpanCircle key={i} color={color} />
+        ))}
       </div>
     </article>
   );
