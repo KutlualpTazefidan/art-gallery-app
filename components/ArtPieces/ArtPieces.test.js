@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { within } from "@testing-library/dom";
 import ArtPieces from ".";
+import { useArtPiecesInfo } from "../../stores/artPiecesInfo";
 
 const pieces = [
   {
@@ -20,6 +21,21 @@ const pieces = [
     imageSource: "https://example-apis.vercel.app/assets/art/blue-and-red.jpg",
     artist: "Jung-Hua Lui",
     slug: "blue-and-red",
+  },
+];
+
+const favoritePieces = [
+  {
+    name: "Blue and Red",
+    imageSource: "https://example-apis.vercel.app/assets/art/blue-and-red.jpg",
+    artist: "Jung-Hua Lui",
+    slug: "blue-and-red",
+  },
+  {
+    name: "Apples and Oranges",
+    imageSource: "http://example.org/apples-and-oranges.jpg",
+    artist: "Picasso",
+    slug: "apples-and-oranges",
   },
 ];
 
@@ -49,4 +65,16 @@ test("favorite-button is displayed", () => {
   items.forEach((item) => {
     expect(within(item).getByLabelText("favorite-button")).toBeInTheDocument();
   });
+});
+
+test("All favorite pieces displayed as a list", async () => {
+  render(<ArtPieces pieces={favoritePieces} />);
+
+  // Favorite images are in a list
+  const favoritesList = screen.getByRole("list");
+  expect(favoritesList).toBeInTheDocument();
+
+  // Favorite images are displayed in a list
+  const favoritesListItems = screen.getAllByRole("listitem");
+  expect(favoritesListItems.length).toBe(2);
 });
