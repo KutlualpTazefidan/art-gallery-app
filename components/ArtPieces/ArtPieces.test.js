@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { within } from "@testing-library/dom";
 import ArtPieces from ".";
-import { useArtPiecesInfo } from "../../stores/artPiecesInfo";
 
 const pieces = [
   {
@@ -82,16 +81,13 @@ test("All favorite pieces displayed as a list", async () => {
 test("Each favorite art pieces image is displayed", async () => {
   render(<ArtPieces pieces={favoritePieces} />);
 
-  const imagesOfFavoritesPieces = screen.getAllByRole("img");
-  expect(imagesOfFavoritesPieces.length).toBe(2);
+  const imageOfFavoritesPieces = screen.getAllByRole("img");
+  expect(imageOfFavoritesPieces.length).toBe(2);
 });
 
-// const slugsOfFavoritePieces = ["my-title", "apples-and-oranges"];
+test("Each favorite art pieces title is displayed", async () => {
+  render(<ArtPieces pieces={favoritePieces} />);
 
-// const addToFavorites = useArtPiecesInfo.getState().addToFavorites;
-// addToFavorites(slugsOfFavoritePieces);
-// const favoritePieces = useArtPiecesInfo.getState().favoritePieces;
-
-// await user.click(favoriteButton);
-
-// expect(favoritePieces).not.toContain(slug);
+  const titleOfFavoritesPieces = screen.getAllByRole("heading");
+  expect(titleOfFavoritesPieces.length).toBe(2);
+});
