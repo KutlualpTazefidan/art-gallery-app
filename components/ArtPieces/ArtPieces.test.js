@@ -15,6 +15,12 @@ const pieces = [
     artist: "Picasso",
     slug: "apples-and-oranges",
   },
+  {
+    name: "Blue and Red",
+    imageSource: "https://example-apis.vercel.app/assets/art/blue-and-red.jpg",
+    artist: "Jung-Hua Lui",
+    slug: "blue-and-red",
+  },
 ];
 
 test("list of pieces is displayed", () => {
@@ -22,7 +28,7 @@ test("list of pieces is displayed", () => {
 
   const items = screen.getAllByRole("listitem");
 
-  expect(items.length).toBe(2);
+  expect(items.length).toBe(3);
 
   const firstItem = items[0];
   expect(within(firstItem).getByText("My Title")).toBeInTheDocument();
@@ -38,9 +44,8 @@ test("favorite-button is displayed", () => {
 
   const items = screen.getAllByRole("listitem");
 
-  expect(items.length).toBe(2);
+  expect(items.length).toBe(3);
 
-  const firstItem = items[0];
   items.forEach((item) => {
     expect(within(item).getByLabelText("favorite-button")).toBeInTheDocument();
   });
