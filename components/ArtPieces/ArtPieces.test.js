@@ -91,3 +91,10 @@ test("Each favorite art pieces title is displayed", async () => {
   const titleOfFavoritesPieces = screen.getAllByRole("heading");
   expect(titleOfFavoritesPieces.length).toBe(2);
 });
+
+test("Each favorite art pieces artist is displayed", async () => {
+  render(<ArtPieces pieces={favoritePieces} />);
+
+  const artistOfFavoritesPieces = screen.getAllByLabelText("artist");
+  expect(artistOfFavoritesPieces.length).toBe(2);
+});
