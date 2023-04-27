@@ -9,6 +9,10 @@ export default function SpotlightPage() {
     return pieces[randomNumber];
   }
 
+  if (pieces.length === 0) {
+    return <div>Loading...</div>;
+  }
+
   const piece = chooseRandomPiece(pieces);
 
   return <Spotlight image={piece.imageSource} artist={piece.artist} />;
