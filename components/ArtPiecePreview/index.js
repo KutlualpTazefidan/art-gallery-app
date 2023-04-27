@@ -3,7 +3,13 @@ import FavoriteButton from "../FavoriteButton";
 
 import { useArtPiecesInfo } from "../../stores/artPiecesInfo";
 
-export default function ArtPiecePreview({ image, title, artist, slug }) {
+export default function ArtPiecePreview({
+  image,
+  title,
+  artist,
+  slug,
+  colors,
+}) {
   // const slug = 1;
   const favoritePieces = useArtPiecesInfo((state) => state.favoritePieces);
   const addToFavorites = useArtPiecesInfo((state) => state.addToFavorites);
