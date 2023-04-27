@@ -1,8 +1,12 @@
-import GlobalStyle from "../styles";
+import { useEffect } from "react";
 import { SWRConfig } from "swr";
 import useSWR from "swr";
+
+import GlobalStyle from "../styles";
+
 import { useArtPiecesStore } from "../stores/artPiecesStore";
-import { useEffect } from "react";
+
+import Layout from "../components/Layout";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
@@ -21,7 +25,9 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }
