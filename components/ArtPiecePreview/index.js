@@ -52,7 +52,11 @@ export default function ArtPiecePreview({
       </div>
       <div aria-label="Color Palette">
         {colors?.map((color, i) => (
-          <StyledSpanCircle key={i} color={color} />
+          <StyledSpanCircle
+            key={i}
+            color={color}
+            aria-label="Colored circle for the color palette"
+          />
         ))}
       </div>
     </article>
