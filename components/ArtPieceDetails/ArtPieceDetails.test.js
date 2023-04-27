@@ -42,3 +42,9 @@ test("back-button is displayed", () => {
 
   expect(screen.getByRole("button", { name: "Back" })).toBeInTheDocument();
 });
+
+test("favorite-button is displayed", () => {
+  render(<ArtPieceDetails />);
+
+  expect(screen.getByLabelText("favorite-button")).toBeInTheDocument();
+});

@@ -25,3 +25,15 @@ test("Spotlight title is not displayed", () => {
 
   expect(screen.queryByRole("heading")).not.toBeInTheDocument();
 });
+
+test("Spotlight favorite-button is displayed", () => {
+  render(
+    <Spotlight
+      image={piece.imageSource}
+      artist={piece.artist}
+      slug={piece.slug}
+    />
+  );
+
+  expect(screen.getByLabelText("favorite-button")).toBeInTheDocument();
+});
