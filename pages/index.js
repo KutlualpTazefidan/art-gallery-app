@@ -1,19 +1,19 @@
-import useSWR from "swr";
-import ArtPieces from "../components/ArtPieces";
+import Spotlight from "../components/Spotlight";
+import { useArtPiecesStore } from "../stores/artPiecesStore";
 
-const URL = "https://example-apis.vercel.app/api/art";
+export default function SpotlightPage() {
+  const pieces = useArtPiecesStore((state) => state.pieces);
 
-export default function HomePage() {
-  const { data } = useSWR(URL);
+  function chooseRandomPiece(pieces) {
+    const randomNumber = Math.floor(Math.random() * pieces.length);
+    return pieces[randomNumber];
+  }
 
-  console.log("data: ", data);
+  if (pieces.length === 0) {
+    return <div>Loading...</div>;
+  }
 
-  if (!data) return <div>Loading...</div>;
+  const piece = chooseRandomPiece(pieces);
 
-  return (
-    <div>
-      <h1>Hello from Next.js</h1>
-      <ArtPieces pieces={data} />
-    </div>
-  );
+  return <Spotlight image={piece.imageSource} artist={piece.artist} />;
 }
