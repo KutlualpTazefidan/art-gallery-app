@@ -12,3 +12,9 @@ test('link labeled "Pieces" is displayed', () => {
 
   expect(screen.getByRole("link", { name: "Pieces" })).toBeInTheDocument();
 });
+
+test('link labeled "Favorites" is displayed', () => {
+  render(<Navigation />);
+
+  expect(screen.getByRole("link", { name: "Favorites" })).toBeInTheDocument();
+});

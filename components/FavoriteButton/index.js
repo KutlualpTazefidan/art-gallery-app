@@ -10,7 +10,11 @@ const StyledButton = styled.button`
 export default function FavoriteButton({ isFavorite, onToggleFavorite }) {
   return (
     <StyledButton onClick={onToggleFavorite} aria-label={"favorite-button"}>
-      {isFavorite ? <AiFillHeart /> : <AiOutlineHeart />}
+      {isFavorite ? (
+        <AiFillHeart aria-label="Active Favorite Button" />
+      ) : (
+        <AiOutlineHeart aria-label="Active Favorite Button" />
+      )}
     </StyledButton>
   );
 }

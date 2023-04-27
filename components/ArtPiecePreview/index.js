@@ -2,7 +2,6 @@ import Image from "next/image";
 import FavoriteButton from "../FavoriteButton";
 
 import { useArtPiecesInfo } from "../../stores/artPiecesInfo";
-import { useState } from "react";
 
 export default function ArtPiecePreview({ image, title, artist, slug }) {
   // const slug = 1;
@@ -35,7 +34,7 @@ export default function ArtPiecePreview({ image, title, artist, slug }) {
           isFavorite={isFavorite}
           onToggleFavorite={handleToggleFavorite}
         />{" "}
-        {artist}
+        <span aria-label="artist">{artist}</span>
       </div>
     </article>
   );
