@@ -6,7 +6,6 @@ export default function ArtPiecesPage() {
 
   return (
     <div>
-      <h1>Hello from Next.js</h1>
       <ArtPieces pieces={pieces} />
     </div>
   );
