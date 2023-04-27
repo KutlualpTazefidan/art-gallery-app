@@ -1,9 +1,9 @@
-import Image from "next/image";
+import ArtPiecePreview from "../ArtPiecePreview";
+
 export default function Spotlight({ image, artist }) {
   return (
     <div>
-      <Image src={image} width={600} height={600} alt="Spotlight image" />
-      <p>{artist}</p>
+      <ArtPiecePreview image={image} artist={artist} />
     </div>
   );
 }

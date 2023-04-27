@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function ArtPiecePreview({ image, title, artist }) {
   return (
     <article>
-      <h3>{title}</h3>
+      {title && <h3>{title}</h3>}
       <Image
         src={image}
         width={300}
