@@ -15,5 +15,11 @@ export default function SpotlightPage() {
 
   const piece = chooseRandomPiece(pieces);
 
-  return <Spotlight image={piece.imageSource} artist={piece.artist} />;
+  return (
+    <Spotlight
+      image={piece.imageSource}
+      artist={piece.artist}
+      slug={piece.slug}
+    />
+  );
 }
