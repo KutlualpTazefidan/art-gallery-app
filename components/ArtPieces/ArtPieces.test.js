@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { within } from "@testing-library/dom";
 import ArtPieces from ".";
+import { useArtPiecesInfo } from "../../stores/artPiecesInfo";
 
 const pieces = [
   {
@@ -37,6 +38,8 @@ const favoritePieces = [
     slug: "apples-and-oranges",
   },
 ];
+
+const slugOfFavoritePieces = ["blue-and-red", "apples-and-oranges"];
 
 test("list of pieces is displayed", () => {
   render(<ArtPieces pieces={pieces} />);
@@ -104,10 +107,6 @@ test("Each favorite art piece's artist is displayed", () => {
     expect(artist).toHaveTextContent(favoritePieces[i].artist)
   );
 });
-
-import { useArtPiecesInfo } from "../../stores/artPiecesInfo";
-
-const slugOfFavoritePieces = ["blue-and-red", "apples-and-oranges"];
 
 // To test the following the slug of favorites pieces needs to be stored in artPiecesInfo store (global state storage)
 test("Each favorite art piece's favorite button is displayed in active state", () => {
