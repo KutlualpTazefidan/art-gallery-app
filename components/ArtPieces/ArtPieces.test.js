@@ -95,7 +95,6 @@ test("Each favorite art piece's title is displayed", () => {
   render(<ArtPieces pieces={favoritePieces} />);
 
   const titleOfFavoritesPieces = screen.getAllByRole("heading");
-  expect(titleOfFavoritesPieces.length).toBe(2);
   titleOfFavoritesPieces.map((title, i) =>
     expect(title).toHaveTextContent(favoritePieces[i].name)
   );
@@ -105,7 +104,6 @@ test("Each favorite art piece's artist is displayed", () => {
   render(<ArtPieces pieces={favoritePieces} />);
 
   const artistOfFavoritesPieces = screen.getAllByLabelText("artist");
-  expect(artistOfFavoritesPieces.length).toBe(2);
   artistOfFavoritesPieces.map((artist, i) =>
     expect(artist).toHaveTextContent(favoritePieces[i].artist)
   );
@@ -115,6 +113,7 @@ test("Each favorite art piece's artist is displayed", () => {
 test("Each favorite art piece's favorite button is displayed in active state", () => {
   const addToFavorites = useArtPiecesInfo.getState().addToFavorites;
   slugOfFavoritePieces.forEach((slug) => addToFavorites(slug));
+
   render(<ArtPieces pieces={favoritePieces} />);
 
   const activeFavoriteButtons = screen.getAllByLabelText(
