@@ -32,3 +32,19 @@ test("list of pieces is displayed", () => {
     within(secondItem).getByText("Apples and Oranges")
   ).toBeInTheDocument();
 });
+
+test("favorite-button is displayed", () => {
+  render(<ArtPieces pieces={pieces} />);
+
+  const items = screen.getAllByRole("listitem");
+
+  expect(items.length).toBe(2);
+
+  const firstItem = items[0];
+  expect(within(firstItem).getByText("My Title")).toBeInTheDocument();
+
+  const secondItem = items[1];
+  expect(
+    within(secondItem).getByText("Apples and Oranges")
+  ).toBeInTheDocument();
+});
