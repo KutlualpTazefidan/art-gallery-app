@@ -33,6 +33,7 @@ export default function ArtPieceDetailsPage() {
         artist={piece.artist}
         year={piece.year}
         genre={piece.genre}
+        colors={piece.colors}
         onBack={() => routerPush("/art-pieces")}
       />
     </div>

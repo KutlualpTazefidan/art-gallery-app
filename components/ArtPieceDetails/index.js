@@ -6,11 +6,17 @@ export default function ArtPieceDetails({
   artist,
   year,
   genre,
+  colors,
   onBack,
 }) {
   return (
     <div>
-      <ArtPiecePreview image={image} title={title} artist={artist} />
+      <ArtPiecePreview
+        image={image}
+        title={title}
+        artist={artist}
+        colors={colors}
+      />
       <div>
         Year: <span>{year}</span>
       </div>

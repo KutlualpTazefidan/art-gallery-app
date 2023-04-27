@@ -6,6 +6,7 @@ const artist = "Jane Doe";
 const image = "http://example.com/image.jpg";
 const year = 1910;
 const genre = "pop art";
+const colors = ["#bccbd5", "#13517b", "#80acc5", "#78a2c4", "#081931"];
 
 test("image is displayed", () => {
   render(<ArtPieceDetails image={image} />);
@@ -47,4 +48,15 @@ test("favorite-button is displayed", () => {
   render(<ArtPieceDetails />);
 
   expect(screen.getByLabelText("favorite-button")).toBeInTheDocument();
+});
+
+test("Colors are passed to the ArtPieceDetails", () => {
+  render(<ArtPieceDetails colors={colors} />);
+
+  const coloredCircles = screen.getAllByLabelText(
+    "Colored circle for the color palette"
+  );
+  coloredCircles.map((circle, i) =>
+    expect(circle.getAttribute("color")).toBe(colors[i])
+  );
 });
