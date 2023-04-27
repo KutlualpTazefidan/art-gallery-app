@@ -90,6 +90,9 @@ test("Each favorite art pieces title is displayed", async () => {
 
   const titleOfFavoritesPieces = screen.getAllByRole("heading");
   expect(titleOfFavoritesPieces.length).toBe(2);
+  titleOfFavoritesPieces.map((title, i) =>
+    expect(title).toHaveTextContent(favoritePieces[i].name)
+  );
 });
 
 test("Each favorite art pieces artist is displayed", async () => {
@@ -97,4 +100,7 @@ test("Each favorite art pieces artist is displayed", async () => {
 
   const artistOfFavoritesPieces = screen.getAllByLabelText("artist");
   expect(artistOfFavoritesPieces.length).toBe(2);
+  artistOfFavoritesPieces.map((artist, i) =>
+    expect(artist).toHaveTextContent(favoritePieces[i].artist)
+  );
 });
