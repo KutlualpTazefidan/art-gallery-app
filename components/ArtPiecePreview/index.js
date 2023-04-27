@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-
+import FavoriteButton from "../FavoriteButton";
 export default function ArtPiecePreview({ image, title, artist }) {
   return (
     <article>
@@ -11,7 +11,9 @@ export default function ArtPiecePreview({ image, title, artist }) {
         height={300}
         alt={`Image titled ${title}`}
       ></Image>
-      <div>{artist}</div>
+      <div>
+        <FavoriteButton isFavorite={0} onToggleFavorite={0} /> {artist}
+      </div>
     </article>
   );
 }
