@@ -35,7 +35,7 @@ export default function ArtPiecePreview({ image, title, artist, slug }) {
           isFavorite={isFavorite}
           onToggleFavorite={handleToggleFavorite}
         />{" "}
-        {artist}
+        <span aria-label="artist">{artist}</span>
       </div>
     </article>
   );
