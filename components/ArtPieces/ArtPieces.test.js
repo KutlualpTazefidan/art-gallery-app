@@ -78,14 +78,14 @@ test("All favorite pieces displayed as a list", async () => {
   expect(favoritesListItems.length).toBe(2);
 });
 
-test("Each favorite art pieces image is displayed", async () => {
+test("Each favorite art piece's image is displayed", async () => {
   render(<ArtPieces pieces={favoritePieces} />);
 
   const imageOfFavoritesPieces = screen.getAllByRole("img");
   expect(imageOfFavoritesPieces.length).toBe(2);
 });
 
-test("Each favorite art pieces title is displayed", async () => {
+test("Each favorite art piece's title is displayed", async () => {
   render(<ArtPieces pieces={favoritePieces} />);
 
   const titleOfFavoritesPieces = screen.getAllByRole("heading");
@@ -95,7 +95,7 @@ test("Each favorite art pieces title is displayed", async () => {
   );
 });
 
-test("Each favorite art pieces artist is displayed", async () => {
+test("Each favorite art piece's artist is displayed", async () => {
   render(<ArtPieces pieces={favoritePieces} />);
 
   const artistOfFavoritesPieces = screen.getAllByLabelText("artist");
