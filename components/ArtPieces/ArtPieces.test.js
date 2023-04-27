@@ -104,3 +104,19 @@ test("Each favorite art piece's artist is displayed", () => {
     expect(artist).toHaveTextContent(favoritePieces[i].artist)
   );
 });
+
+import { useArtPiecesInfo } from "../../stores/artPiecesInfo";
+
+const slugOfFavoritePieces = ["blue-and-red", "apples-and-oranges"];
+
+// To test the following the slug of favorites pieces needs to be stored in artPiecesInfo store (global state storage)
+test("Each favorite art piece's favorite button is displayed in active state", () => {
+  const addToFavorites = useArtPiecesInfo.getState().addToFavorites;
+  slugOfFavoritePieces.forEach((slug) => addToFavorites(slug));
+  render(<ArtPieces pieces={favoritePieces} />);
+
+  const activeFavoriteButtons = screen.getAllByLabelText(
+    "Active Favorite Button"
+  );
+  expect(activeFavoriteButtons.length).toBe(2);
+});
