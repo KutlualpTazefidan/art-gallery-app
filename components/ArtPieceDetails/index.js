@@ -1,6 +1,13 @@
 import ArtPiecePreview from "../ArtPiecePreview";
 
-export default function ArtPieceDetails({ image, title, artist, year, genre }) {
+export default function ArtPieceDetails({
+  image,
+  title,
+  artist,
+  year,
+  genre,
+  onBack,
+}) {
   return (
     <div>
       <ArtPiecePreview image={image} title={title} artist={artist} />
@@ -11,7 +18,7 @@ export default function ArtPieceDetails({ image, title, artist, year, genre }) {
         Genre: <span>{genre}</span>
       </div>
       <div>
-        <button>Back</button>
+        <button onClick={onBack}>Back</button>
       </div>
     </div>
   );
