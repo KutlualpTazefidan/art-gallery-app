@@ -66,7 +66,7 @@ test("favorite-button is displayed", () => {
   });
 });
 
-test("All favorite pieces displayed as a list", async () => {
+test("All favorite pieces displayed as a list", () => {
   render(<ArtPieces pieces={favoritePieces} />);
 
   // Favorite images are in a list
@@ -78,14 +78,14 @@ test("All favorite pieces displayed as a list", async () => {
   expect(favoritesListItems.length).toBe(2);
 });
 
-test("Each favorite art piece's image is displayed", async () => {
+test("Each favorite art piece's image is displayed", () => {
   render(<ArtPieces pieces={favoritePieces} />);
 
   const imageOfFavoritesPieces = screen.getAllByRole("img");
   expect(imageOfFavoritesPieces.length).toBe(2);
 });
 
-test("Each favorite art piece's title is displayed", async () => {
+test("Each favorite art piece's title is displayed", () => {
   render(<ArtPieces pieces={favoritePieces} />);
 
   const titleOfFavoritesPieces = screen.getAllByRole("heading");
@@ -95,7 +95,7 @@ test("Each favorite art piece's title is displayed", async () => {
   );
 });
 
-test("Each favorite art piece's artist is displayed", async () => {
+test("Each favorite art piece's artist is displayed", () => {
   render(<ArtPieces pieces={favoritePieces} />);
 
   const artistOfFavoritesPieces = screen.getAllByLabelText("artist");
