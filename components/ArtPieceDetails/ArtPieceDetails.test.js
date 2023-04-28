@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { within } from "@testing-library/dom";
+import userEvent from "@testing-library/user-event";
+
 import ArtPieceDetails from ".";
 
 const title = "My Title";
@@ -8,6 +10,7 @@ const image = "http://example.com/image.jpg";
 const year = 1910;
 const genre = "pop art";
 const colors = ["#bccbd5", "#13517b", "#80acc5", "#78a2c4", "#081931"];
+const slug = "my-slug";
 
 test("image is displayed", () => {
   render(<ArtPieceDetails image={image} />);
@@ -63,10 +66,13 @@ test("Colors are passed to the ArtPieceDetails", () => {
 });
 
 describe("Comments for Art Pieces", () => {
+  let user;
   let commentsSection;
 
   beforeEach(() => {
-    render(<ArtPieceDetails />);
+    user = userEvent.setup();
+
+    render(<ArtPieceDetails slug={slug} />);
 
     commentsSection = screen.getByTestId("comments");
   });
@@ -91,5 +97,30 @@ describe("Comments for Art Pieces", () => {
     expect(
       within(commentsSection).getByRole("button", { name: "Send" })
     ).toBeInTheDocument();
+  });
+
+  describe("After submitting the form, the comment is appended to the list of comments", () => {
+    it("works when adding a first comment", async () => {
+      const input = screen.getByRole("textbox");
+      const button = screen.getByRole("button", { name: "Send" });
+
+      await user.type(input, "my new comment! :)");
+
+      await user.click(button);
+
+      expect(within(commentsSection).getByText("my new comment! :)"));
+    });
+    it("works when adding a second comment", async () => {
+      const input = screen.getByRole("textbox");
+      const button = screen.getByRole("button", { name: "Send" });
+
+      await user.type(input, "my first comment");
+      await user.click(button);
+      expect(within(commentsSection).getByText("my first comment"));
+
+      await user.type(input, "my second comment");
+      await user.click(button);
+      expect(within(commentsSection).getByText("my second comment"));
+    });
   });
 });
