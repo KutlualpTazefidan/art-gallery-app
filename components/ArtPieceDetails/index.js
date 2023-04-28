@@ -26,6 +26,7 @@ export default function ArtPieceDetails({
       <div>
         <button onClick={onBack}>Back</button>
       </div>
+      <h3>Comments</h3>
     </div>
   );
 }

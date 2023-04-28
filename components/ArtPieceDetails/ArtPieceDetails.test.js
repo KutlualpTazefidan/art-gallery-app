@@ -60,3 +60,9 @@ test("Colors are passed to the ArtPieceDetails", () => {
     expect(circle.getAttribute("color")).toBe(colors[i])
   );
 });
+
+test('ArtPieceDetails has a headline "Comments"', () => {
+  render(<ArtPieceDetails />);
+
+  screen.getByRole("heading", { name: "Comments" });
+});
