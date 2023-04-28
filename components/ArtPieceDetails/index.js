@@ -26,9 +26,14 @@ export default function ArtPieceDetails({
       <div>
         <button onClick={onBack}>Back</button>
       </div>
-      <h3>Comments</h3>
-      <input id="comment" type="text" />
-      <button>Send</button>
+      <section data-testid="comments">
+        <h3>Comments</h3>
+        <ul>
+          <li>hello</li>
+        </ul>
+        <input id="comment" type="text" />
+        <button>Send</button>
+      </section>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { within } from "@testing-library/dom";
 import ArtPieceDetails from ".";
 
 const title = "My Title";
@@ -62,23 +63,33 @@ test("Colors are passed to the ArtPieceDetails", () => {
 });
 
 describe("Comments for Art Pieces", () => {
-  it('has a headline "Comments"', () => {
+  let commentsSection;
+
+  beforeEach(() => {
     render(<ArtPieceDetails />);
 
+    commentsSection = screen.getByTestId("comments");
+  });
+
+  it('has a headline "Comments"', () => {
     expect(
-      screen.getByRole("heading", { name: "Comments" })
+      within(commentsSection).getByRole("heading", { name: "Comments" })
     ).toBeInTheDocument();
   });
 
-  it("has an input field to write a comment", () => {
-    render(<ArtPieceDetails />);
+  it("has a list of comments for this art piece", () => {
+    expect(within(commentsSection).getByRole("list")).toBeInTheDocument();
+  });
 
-    expect(screen.getByRole("textbox", { id: "comment" })).toBeInTheDocument();
+  it("has an input field to write a comment", () => {
+    expect(
+      within(commentsSection).getByRole("textbox", { id: "comment" })
+    ).toBeInTheDocument();
   });
 
   it('has a submit button labeled "Send"', () => {
-    render(<ArtPieceDetails />);
-
-    expect(screen.getByRole("button", { name: "Send" })).toBeInTheDocument();
+    expect(
+      within(commentsSection).getByRole("button", { name: "Send" })
+    ).toBeInTheDocument();
   });
 });
