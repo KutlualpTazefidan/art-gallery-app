@@ -1,4 +1,7 @@
 import { render, screen } from "@testing-library/react";
+import { within } from "@testing-library/dom";
+import userEvent from "@testing-library/user-event";
+
 import ArtPieceDetails from ".";
 
 const title = "My Title";
@@ -7,6 +10,7 @@ const image = "http://example.com/image.jpg";
 const year = 1910;
 const genre = "pop art";
 const colors = ["#bccbd5", "#13517b", "#80acc5", "#78a2c4", "#081931"];
+const slug = "my-slug";
 
 test("image is displayed", () => {
   render(<ArtPieceDetails image={image} />);
@@ -59,4 +63,64 @@ test("Colors are passed to the ArtPieceDetails", () => {
   coloredCircles.map((circle, i) =>
     expect(circle.getAttribute("color")).toBe(colors[i])
   );
+});
+
+describe("Comments for Art Pieces", () => {
+  let user;
+  let commentsSection;
+
+  beforeEach(() => {
+    user = userEvent.setup();
+
+    render(<ArtPieceDetails slug={slug} />);
+
+    commentsSection = screen.getByTestId("comments");
+  });
+
+  it('has a headline "Comments"', () => {
+    expect(
+      within(commentsSection).getByRole("heading", { name: "Comments" })
+    ).toBeInTheDocument();
+  });
+
+  it("has a list of comments for this art piece", () => {
+    expect(within(commentsSection).getByRole("list")).toBeInTheDocument();
+  });
+
+  it("has an input field to write a comment", () => {
+    expect(
+      within(commentsSection).getByRole("textbox", { id: "comment" })
+    ).toBeInTheDocument();
+  });
+
+  it('has a submit button labeled "Send"', () => {
+    expect(
+      within(commentsSection).getByRole("button", { name: "Send" })
+    ).toBeInTheDocument();
+  });
+
+  describe("After submitting the form, the comment is appended to the list of comments", () => {
+    it("works when adding a first comment", async () => {
+      const input = screen.getByRole("textbox");
+      const button = screen.getByRole("button", { name: "Send" });
+
+      await user.type(input, "my new comment! :)");
+
+      await user.click(button);
+
+      expect(within(commentsSection).getByText("my new comment! :)")); // eslint-disable-line jest/valid-expect
+    });
+    it("works when adding a second comment", async () => {
+      const input = screen.getByRole("textbox");
+      const button = screen.getByRole("button", { name: "Send" });
+
+      await user.type(input, "my first comment");
+      await user.click(button);
+      expect(within(commentsSection).getByText("my first comment")); // eslint-disable-line jest/valid-expect
+
+      await user.type(input, "my second comment");
+      await user.click(button);
+      expect(within(commentsSection).getByText("my second comment")); // eslint-disable-line jest/valid-expect
+    });
+  });
 });
