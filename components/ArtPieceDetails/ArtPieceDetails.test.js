@@ -64,5 +64,11 @@ test("Colors are passed to the ArtPieceDetails", () => {
 test('ArtPieceDetails has a headline "Comments"', () => {
   render(<ArtPieceDetails />);
 
-  screen.getByRole("heading", { name: "Comments" });
+  expect(screen.getByRole("heading", { name: "Comments" })).toBeInTheDocument();
+});
+
+test("ArtPieceDetails has an input field to write a comment", () => {
+  render(<ArtPieceDetails />);
+
+  expect(screen.getByRole("textbox", { id: "comment" })).toBeInTheDocument();
 });

@@ -27,6 +27,7 @@ export default function ArtPieceDetails({
         <button onClick={onBack}>Back</button>
       </div>
       <h3>Comments</h3>
+      <input id="comment" type="text" />
     </div>
   );
 }
