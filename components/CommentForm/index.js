@@ -1,7 +1,16 @@
-export default function CommentForm() {
+export default function CommentForm({ onSubmitComment }) {
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+
+    const commentInput = form.elements.comment;
+
+    onSubmitComment({ text: commentInput.value });
+  }
+
   return (
-    <form>
-      <input id="comment" type="text" />
+    <form onSubmit={handleSubmit}>
+      <textarea rows="3" id="comment" name="comment" />
       <button>Send</button>
     </form>
   );
