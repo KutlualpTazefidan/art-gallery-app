@@ -9,9 +9,11 @@ import Link from "next/link";
 import styled from "styled-components";
 
 const StyledNavigationBar = styled.nav`
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background-color: var(--primary-color);
+  box-shadow: 0 0px 28px rgba(0, 0, 0, 0.25), 0 0px 10px rgba(0, 0, 0, 0.22);
+
   > ul {
     display: flex;
     align-items: center;
