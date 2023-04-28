@@ -7,6 +7,9 @@ https://dev.to/ivandotv/using-next-js-link-component-with-material-ui-buttons-an
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { HiOutlineMenu } from "react-icons/hi";
+import { HiOutlineZoomIn } from "react-icons/hi";
+import { HiOutlineHeart } from "react-icons/hi";
 
 const StyledNavigationBar = styled.nav`
   padding-top: 1rem;
@@ -24,6 +27,8 @@ const StyledNavigationBar = styled.nav`
     margin: 0;
   }
   button {
+    font-family: inherit;
+    letter-spacing: 0.2rem;
     background: transparent;
     border: solid 1px transparent;
     border-radius: 1rem;
@@ -56,17 +61,23 @@ export default function Navigation() {
       <ul>
         <li>
           <Link href="/" passHref>
-            <button>Spotlight</button>
+            <button>
+              Spotlight <HiOutlineZoomIn />
+            </button>
           </Link>
         </li>
         <li>
           <Link href="/art-pieces">
-            <button>Pieces</button>
+            <button>
+              Pieces <HiOutlineMenu />
+            </button>
           </Link>
         </li>
         <li>
           <Link href="/favorites">
-            <button>Favorites</button>
+            <button>
+              Favorites <HiOutlineHeart />
+            </button>
           </Link>
         </li>
       </ul>

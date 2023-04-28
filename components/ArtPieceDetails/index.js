@@ -1,5 +1,6 @@
 import ArtPiecePreview from "../ArtPiecePreview";
 import styled from "styled-components";
+import { HiOutlineArrowCircleLeft } from "react-icons/hi";
 
 const StyledDetailsSection = styled.section`
   margin-top: 1rem;
@@ -16,7 +17,10 @@ const StyledDetailsSection = styled.section`
 const StyledButtonContainer = styled.div`
   display: flex;
   justify-content: center;
+  padding-bottom: 3rem;
   > button {
+    font-family: inherit;
+    letter-spacing: 0.2rem;
     background: transparent;
     border: solid 1px transparent;
     border-radius: 1rem;
@@ -80,7 +84,9 @@ export default function ArtPieceDetails({
       />
 
       <StyledButtonContainer className="button-container">
-        <button onClick={onBack}>Back</button>
+        <button onClick={onBack}>
+          <HiOutlineArrowCircleLeft className="back-arrow" /> Back
+        </button>
       </StyledButtonContainer>
     </div>
   );
