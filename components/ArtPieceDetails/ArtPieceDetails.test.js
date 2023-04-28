@@ -108,7 +108,7 @@ describe("Comments for Art Pieces", () => {
 
       await user.click(button);
 
-      expect(within(commentsSection).getByText("my new comment! :)"));
+      expect(within(commentsSection).getByText("my new comment! :)")); // eslint-disable-line jest/valid-expect
     });
     it("works when adding a second comment", async () => {
       const input = screen.getByRole("textbox");
@@ -116,11 +116,11 @@ describe("Comments for Art Pieces", () => {
 
       await user.type(input, "my first comment");
       await user.click(button);
-      expect(within(commentsSection).getByText("my first comment"));
+      expect(within(commentsSection).getByText("my first comment")); // eslint-disable-line jest/valid-expect
 
       await user.type(input, "my second comment");
       await user.click(button);
-      expect(within(commentsSection).getByText("my second comment"));
+      expect(within(commentsSection).getByText("my second comment")); // eslint-disable-line jest/valid-expect
     });
   });
 });

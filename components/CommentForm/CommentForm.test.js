@@ -16,6 +16,6 @@ describe("CommentForm", () => {
 
     await user.click(button);
 
-    expect(handleSubmit).toBeCalledWith({ text: "my new comment! :)" });
+    expect(handleSubmit).toHaveBeenCalledWith({ text: "my new comment! :)" });
   });
 });
