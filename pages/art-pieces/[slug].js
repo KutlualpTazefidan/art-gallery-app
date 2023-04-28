@@ -34,6 +34,7 @@ export default function ArtPieceDetailsPage() {
         year={piece.year}
         genre={piece.genre}
         colors={piece.colors}
+        slug={slug}
         onBack={() => routerPush("/art-pieces")}
       />
     </div>
