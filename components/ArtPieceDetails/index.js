@@ -1,6 +1,10 @@
 import ArtPiecePreview from "../ArtPiecePreview";
 import styled from "styled-components";
 import { HiOutlineArrowCircleLeft } from "react-icons/hi";
+import CommentForm from "../CommentForm";
+import Comments from "../Comments";
+
+import { useArtPiecesInfo } from "../../stores/artPiecesInfo";
 
 const StyledDetailsSection = styled.section`
   margin-top: 1rem;
@@ -54,8 +58,17 @@ export default function ArtPieceDetails({
   year,
   genre,
   colors,
+  slug,
   onBack,
 }) {
+  const commentsBySlug = useArtPiecesInfo((state) => state.commentsBySlug);
+  const addComment = useArtPiecesInfo((state) => state.addComment);
+  const comments = commentsBySlug[slug];
+
+  function handleSubmitComment(comment) {
+    addComment(slug, comment);
+  }
+
   return (
     <div>
       <ArtPiecePreview
@@ -88,6 +101,11 @@ export default function ArtPieceDetails({
           <HiOutlineArrowCircleLeft className="back-arrow" /> Back
         </button>
       </StyledButtonContainer>
+      <section data-testid="comments">
+        <h3>Comments</h3>
+        <Comments comments={comments} />
+        <CommentForm onSubmitComment={handleSubmitComment} />
+      </section>
     </div>
   );
 }
