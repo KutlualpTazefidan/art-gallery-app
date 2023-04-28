@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import ArtPiecePreview from "../ArtPiecePreview";
+import styled from "styled-components";
 
 export default function ArtPieces({ pieces }) {
   return (
