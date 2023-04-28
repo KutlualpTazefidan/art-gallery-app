@@ -12,6 +12,12 @@ import { HiOutlineZoomIn } from "react-icons/hi";
 import { HiOutlineHeart } from "react-icons/hi";
 
 const StyledNavigationBar = styled.nav`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   background-color: var(--primary-color);
