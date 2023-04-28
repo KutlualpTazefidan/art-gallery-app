@@ -1,7 +1,9 @@
-export default function Comments() {
+export default function Comments({ comments = [] }) {
   return (
     <ul>
-      <li>hello</li>
+      {comments.map((comment) => {
+        return <li key={comment.id}>{comment.text}</li>;
+      })}
     </ul>
   );
 }
