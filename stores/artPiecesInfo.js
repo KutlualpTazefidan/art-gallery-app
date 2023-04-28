@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { uid } from "uid";
 
 export const useArtPiecesInfo = create((set, get) => ({
   // favoritePieces
@@ -19,6 +20,7 @@ export const useArtPiecesInfo = create((set, get) => ({
   // comments
   commentsBySlug: { cool: [], blah: [{ text: "my comment" }] },
   addComment: (slug, comment) => {
+    comment.id = uid();
     set(({ commentsBySlug }) => {
       if (!commentsBySlug[slug]) {
         const copy = { ...commentsBySlug };

@@ -1,5 +1,3 @@
-import { uid } from "uid";
-
 export default function CommentForm({ onSubmitComment }) {
   function handleSubmit(e) {
     e.preventDefault();
@@ -7,7 +5,7 @@ export default function CommentForm({ onSubmitComment }) {
 
     const commentInput = form.elements.comment;
 
-    onSubmitComment({ id: uid(), text: commentInput.value });
+    onSubmitComment({ text: commentInput.value });
 
     commentInput.value = "";
   }
