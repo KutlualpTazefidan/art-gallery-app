@@ -51,6 +51,14 @@ const StyledButtonContainer = styled.div`
   }
 `;
 
+const StyledCommentContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3rem;
+`;
+
 export default function ArtPieceDetails({
   image,
   title,
@@ -70,7 +78,7 @@ export default function ArtPieceDetails({
   }
 
   return (
-    <div>
+    <div className="detailed-page">
       <ArtPiecePreview
         image={image}
         title={title}
@@ -101,11 +109,14 @@ export default function ArtPieceDetails({
           <HiOutlineArrowCircleLeft className="back-arrow" /> Back
         </button>
       </StyledButtonContainer>
-      <section data-testid="comments">
+      <StyledCommentContainer
+        data-testid="comments"
+        className="comment-section"
+      >
         <h3>Comments</h3>
         <Comments comments={comments} />
         <CommentForm onSubmitComment={handleSubmitComment} />
-      </section>
+      </StyledCommentContainer>
     </div>
   );
 }
