@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
+import { Advent_Pro } from "@next/font/google";
 
+const adventPro = Advent_Pro({ subsets: ["latin"] });
 export default createGlobalStyle`
   *,
   *::before,
@@ -9,7 +11,8 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: system-ui;
+    /* font-family: system-ui; */
+    font-family: adventPro;
     --primary-color: #222222;
     --secondary-color: #F9DBBB;
     --third-color:rgb(232, 249, 253, 0.7);
