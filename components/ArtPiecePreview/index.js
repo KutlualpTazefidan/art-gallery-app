@@ -48,12 +48,11 @@ const StyledArticle = styled.article`
   .image-title {
     width: 100%;
     text-align: left;
-    /* left: 0; */
-    /* width: 300px; */
   }
   .color-palette {
     display: flex;
     flex-direction: column;
+    gap: 0.2rem;
   }
   svg {
     filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
