@@ -85,7 +85,7 @@ export default function ArtPiecePreview({
   return (
     <StyledArticle>
       <div className="container-for-img-title-favorite">
-        {image && (
+        {image && slug && (
           <Link href={`/art-pieces/${slug}`}>
             <Image
               src={image}
@@ -94,6 +94,14 @@ export default function ArtPiecePreview({
               alt={`Image titled ${title}`}
             ></Image>
           </Link>
+        )}
+        {image && (
+          <Image
+            src={image}
+            width={300}
+            height={300}
+            alt={`Image titled ${title}`}
+          ></Image>
         )}
         <div className="container-for-artist-favorite">
           <FavoriteButton
