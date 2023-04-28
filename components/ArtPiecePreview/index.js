@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import FavoriteButton from "../FavoriteButton";
 import { useArtPiecesInfo } from "../../stores/artPiecesInfo";
 import styled from "styled-components";
@@ -85,12 +86,14 @@ export default function ArtPiecePreview({
     <StyledArticle>
       <div className="container-for-img-title-favorite">
         {image && (
-          <Image
-            src={image}
-            width={300}
-            height={300}
-            alt={`Image titled ${title}`}
-          ></Image>
+          <Link href={`/art-pieces/${slug}`}>
+            <Image
+              src={image}
+              width={300}
+              height={300}
+              alt={`Image titled ${title}`}
+            ></Image>
+          </Link>
         )}
         <div className="container-for-artist-favorite">
           <FavoriteButton
