@@ -65,6 +65,7 @@ export default function ArtPiecePreview({
   artist,
   slug,
   colors,
+  details,
 }) {
   // const slug = 1;
   const favoritePieces = useArtPiecesInfo((state) => state.favoritePieces);
@@ -111,6 +112,7 @@ export default function ArtPiecePreview({
         </div>
       </div>
       {title && <caption className="image-title">{title}</caption>}
+      {details}
     </StyledArticle>
   );
 }
