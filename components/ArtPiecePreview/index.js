@@ -33,13 +33,14 @@ const StyledArticle = styled.article`
     align-items: center;
   }
   .container-for-artist-favorite > button {
-    /* position: absolute; */
-    /* top: 1rem; */
-    /* right: 1rem; */
     font-size: 2rem;
   }
   .artist-name {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
     writing-mode: vertical-rl;
+    padding: 0.2rem;
   }
   .container-for-img-title-favorite {
     display: flex;
