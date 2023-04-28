@@ -61,14 +61,24 @@ test("Colors are passed to the ArtPieceDetails", () => {
   );
 });
 
-test('ArtPieceDetails has a headline "Comments"', () => {
-  render(<ArtPieceDetails />);
+describe("Comments for Art Pieces", () => {
+  it('has a headline "Comments"', () => {
+    render(<ArtPieceDetails />);
 
-  expect(screen.getByRole("heading", { name: "Comments" })).toBeInTheDocument();
-});
+    expect(
+      screen.getByRole("heading", { name: "Comments" })
+    ).toBeInTheDocument();
+  });
 
-test("ArtPieceDetails has an input field to write a comment", () => {
-  render(<ArtPieceDetails />);
+  it("has an input field to write a comment", () => {
+    render(<ArtPieceDetails />);
 
-  expect(screen.getByRole("textbox", { id: "comment" })).toBeInTheDocument();
+    expect(screen.getByRole("textbox", { id: "comment" })).toBeInTheDocument();
+  });
+
+  it('has a submit button labeled "Send"', () => {
+    render(<ArtPieceDetails />);
+
+    expect(screen.getByRole("button", { name: "Send" })).toBeInTheDocument();
+  });
 });

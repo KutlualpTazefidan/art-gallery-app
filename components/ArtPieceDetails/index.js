@@ -28,6 +28,7 @@ export default function ArtPieceDetails({
       </div>
       <h3>Comments</h3>
       <input id="comment" type="text" />
+      <button>Send</button>
     </div>
   );
 }
