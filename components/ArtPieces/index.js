@@ -3,9 +3,15 @@ import React from "react";
 import ArtPiecePreview from "../ArtPiecePreview";
 import styled from "styled-components";
 
+const StyledList = styled.ul`
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+`;
+
 export default function ArtPieces({ pieces }) {
   return (
-    <ul>
+    <StyledList>
       {pieces.map((piece) => {
         return (
           <li key={piece.slug}>
@@ -20,6 +26,6 @@ export default function ArtPieces({ pieces }) {
           </li>
         );
       })}
-    </ul>
+    </StyledList>
   );
 }
