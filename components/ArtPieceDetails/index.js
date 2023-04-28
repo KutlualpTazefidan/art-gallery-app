@@ -1,4 +1,6 @@
 import ArtPiecePreview from "../ArtPiecePreview";
+import CommentForm from "../CommentForm";
+import Comments from "../Comments";
 
 export default function ArtPieceDetails({
   image,
@@ -28,11 +30,8 @@ export default function ArtPieceDetails({
       </div>
       <section data-testid="comments">
         <h3>Comments</h3>
-        <ul>
-          <li>hello</li>
-        </ul>
-        <input id="comment" type="text" />
-        <button>Send</button>
+        <Comments />
+        <CommentForm />
       </section>
     </div>
   );
