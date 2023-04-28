@@ -111,7 +111,7 @@ export default function ArtPiecePreview({
           </span>
         </div>
       </div>
-      {title && <caption className="image-title">{title}</caption>}
+      {title && <p className="image-title">{title}</p>}
       {details}
     </StyledArticle>
   );
